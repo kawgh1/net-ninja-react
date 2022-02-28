@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 function Home() {
@@ -7,26 +7,48 @@ function Home() {
         {
             title: "My new website",
             body: "lorem ipsum...",
-            author: "mario",
+            author: "Mario",
             id: 1,
         },
         {
             title: "Welcome party!",
             body: "lorem ipsum...",
-            author: "yoshi",
+            author: "Yoshi",
             id: 2,
         },
         {
             title: "Web dev top tips",
             body: "lorem ipsum...",
-            author: "mario",
+            author: "Mario",
             id: 3,
         },
     ]);
 
+    useEffect(() => {
+        console.log("use effect ran");
+    });
+
+    // Blog functions
+    const handleDelete = (id) => {
+        // set newBlogs to equal all the blogs that dont have our target id
+        const newBlogs = blogs.filter((blog) => blog.id !== id);
+        setBlogs(newBlogs);
+    };
+
     return (
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs" />
+            {/* All Blogs */}
+            <BlogList
+                blogs={blogs}
+                title="All Blogs"
+                handleDelete={handleDelete}
+            />
+            {/* Mario's Blogs */}
+            <BlogList
+                blogs={blogs.filter((blog) => blog.author === "Mario")}
+                title="Mario's Blogs"
+                handleDelete={handleDelete}
+            />
         </div>
     );
 }

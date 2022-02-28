@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
 
 -   #### best practices for:
     -   react dev tools
-    -   component layout
+    -   component layout & design
     -   react router
     -   hooks
     -   forms
