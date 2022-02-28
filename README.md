@@ -6,6 +6,7 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
 ### Quick Refresher on React basics
 
 -   #### best practices for:
+    -   react dev tools
     -   component layout
     -   react router
     -   hooks
