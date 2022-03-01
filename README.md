@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
     -   component layout & design
     -   react router
     -   hooks
-    -   forms
+    -   forms & controlled inputs
     -   api calls to get and post data in components
     -   custom hooks
 
