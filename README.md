@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
     -   api calls to get and post data in components
     -   custom hooks
 
-### Run fake JSON server to query data to and from
+### Run fake JSON server on localhost:8000 to query data to and from
 
 -   **npx json-server --watch data/db.json --port 8000**
 -   **http://localhost:8000/blogs**
@@ -37,3 +37,6 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
 
     -   our custom useFetchHook makes an API call
     -   if a user quickly goes to another internal page, that call is still running and can render an error - **"can't perform a react state update on an unmounted component"**
+
+-   ### Optional - set up a backend node server to build out API
+-   https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
