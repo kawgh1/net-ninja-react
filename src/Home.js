@@ -1,54 +1,59 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import useFetchHook from "./useFetchHook";
 import BlogList from "./BlogList";
 
 function Home() {
-    const [blogs, setBlogs] = useState([
-        {
-            title: "My new website",
-            body: "lorem ipsum...",
-            author: "Mario",
-            id: 1,
-        },
-        {
-            title: "Welcome party!",
-            body: "lorem ipsum...",
-            author: "Yoshi",
-            id: 2,
-        },
-        {
-            title: "Web dev top tips",
-            body: "lorem ipsum...",
-            author: "Mario",
-            id: 3,
-        },
-    ]);
+    // This function was extracted into a Custom Hook 'useFetchHook.js'
+    // leaving this code here for reference
 
-    useEffect(() => {
-        console.log("use effect ran");
-    });
+    // const [blogs, setBlogs] = useState(null);
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [error, setError] = useState(null);
 
-    // Blog functions
-    const handleDelete = (id) => {
-        // set newBlogs to equal all the blogs that dont have our target id
-        const newBlogs = blogs.filter((blog) => blog.id !== id);
-        setBlogs(newBlogs);
-    };
+    // useEffect(() => {
+    //     fetch("http://localhost:8000/blogs")
+    //         .then((res) => {
+    //             if (!res.ok) {
+    //                 throw Error(
+    //                     "ERROR: could not fetch data for that resource."
+    //                 );
+    //             }
+
+    //             return res.json();
+    //         })
+    //         .then((data) => {
+    //             // console.log(data);
+    //             setBlogs(data);
+    //             setIsLoading(false);
+    //             setError(null);
+    //         })
+    //         .catch((err) => {
+    //             setError(err.message);
+    //             setIsLoading(false);
+    //         });
+    // }, []); // run once
+
+    // "data:blogs" here means grab the data from the hook but call it "blogs" moving forward
+    const {
+        data: blogs,
+        isLoading,
+        error,
+    } = useFetchHook("http://localhost:8000/blogs");
 
     return (
         <div className="home">
+            {error && <div> {error} </div>}
+            {isLoading && <div>Loading...</div>}
             {/* All Blogs */}
-            <BlogList
-                blogs={blogs}
-                title="All Blogs"
-                handleDelete={handleDelete}
-            />
+            {blogs && <BlogList blogs={blogs} title="All Blogs" />}
             {/* Mario's Blogs */}
-            <BlogList
-                blogs={blogs.filter((blog) => blog.author === "Mario")}
-                title="Mario's Blogs"
-                handleDelete={handleDelete}
-            />
+            {blogs && (
+                <BlogList
+                    blogs={blogs.filter((blog) => blog.author === "Mario")}
+                    title="Mario's Blogs"
+                />
+            )}
         </div>
     );
 }
