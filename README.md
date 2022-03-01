@@ -3,6 +3,8 @@
 https://github.com/iamshaunjp/Complete-React-Tutorial
 https://www.youtube.com/watch?v=NbTrGcz4DW8
 
+-   this uses a localhost server, won't run on web
+
 ### Quick Refresher on React basics
 
 -   #### best practices for:
@@ -32,5 +34,6 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
     -   **npm install react-router-dom@5**
 
 -   ### useEffect cleanup function
+
     -   our custom useFetchHook makes an API call
     -   if a user quickly goes to another internal page, that call is still running and can render an error - **"can't perform a react state update on an unmounted component"**
