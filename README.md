@@ -19,7 +19,18 @@ https://www.youtube.com/watch?v=NbTrGcz4DW8
 -   **npx json-server --watch data/db.json --port 8000**
 -   **http://localhost:8000/blogs**
 -   ### Endpoints
+
     -   /blogs GET Fetch all blogs
     -   /blogs/{id} GET Fetch a single blog
     -   /blogs POST Add a new blog
     -   /blogs/{id} DELETE Delete a blog
+
+-   ### React Router
+
+    -   Version 5 is stable
+    -   React Router intercepts new page requests from hitting the server, and renders those pages as components, saving server calls and improving performance
+    -   **npm install react-router-dom@5**
+
+-   ### useEffect cleanup function
+    -   our custom useFetchHook makes an API call
+    -   if a user quickly goes to another internal page, that call is still running and can render an error - **"can't perform a react state update on an unmounted component"**
